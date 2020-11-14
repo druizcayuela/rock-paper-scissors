@@ -23,11 +23,11 @@ public class TotalResultMemoryService extends AbstractMemoryService<TotalResult>
 
         totalResult.setRoundsPlayed(totalResult.getRoundsPlayed() + 1);
 
-        if (roundResult.getResult().equals(Result.ONE_WINS.getOutput())) {
+        if (roundResult.getResult().equals(Result.ONE_WINS)) {
             totalResult.setWinsFirstPlayer(totalResult.getWinsFirstPlayer() + 1);
-        } else if (roundResult.getResult().equals(Result.TWO_WINS.getOutput())) {
+        } else if (roundResult.getResult().equals(Result.TWO_WINS)) {
             totalResult.setWinsSecondPlayer(totalResult.getWinsSecondPlayer() + 1);
-        } else if (roundResult.getResult().equals(Result.DRAW.getOutput())) {
+        } else if (roundResult.getResult().equals(Result.DRAW)) {
             totalResult.setTotalDraws(totalResult.getTotalDraws() + 1);
         }
         return this.save(totalResult);

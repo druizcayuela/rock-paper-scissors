@@ -16,7 +16,7 @@ import lombok.*;
 @Builder
 public class RoundResult {
 
-    private String firstPlayerChoice;
-    private String secondPlayerChoice;
-    private String result;
+    private Move firstPlayerChoice;
+    private Move secondPlayerChoice;
+    private Result result;
 }

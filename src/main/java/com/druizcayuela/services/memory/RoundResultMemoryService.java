@@ -30,9 +30,9 @@ public class RoundResultMemoryService extends AbstractMemoryService<RoundResult>
         }
 
         return RoundResult.builder()
-                .firstPlayerChoice(onePlayerMove.getOutput())
-                .secondPlayerChoice(secondPlayerMove.getOutput())
-                .result(result.getOutput())
+                .firstPlayerChoice(onePlayerMove)
+                .secondPlayerChoice(secondPlayerMove)
+                .result(result)
                 .build();
     }
 }
