@@ -2,6 +2,13 @@ package com.druizcayuela.api.model;
 
 import lombok.*;
 
+/**
+ * The response for the {@link com.druizcayuela.controlleres.PlayRoundController}
+ *
+ * @author druizcayuela
+ *
+ */
+
 @Setter
 @Getter
 @NoArgsConstructor
