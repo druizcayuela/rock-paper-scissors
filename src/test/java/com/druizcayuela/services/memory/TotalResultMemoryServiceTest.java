@@ -69,7 +69,7 @@ public class TotalResultMemoryServiceTest {
 
         // Given
         RoundResult roundResult = RoundResult.builder()
-                .result(Result.ONE_WINS.getOutput())
+                .result(Result.ONE_WINS)
                 .build();
 
         // When
@@ -88,7 +88,7 @@ public class TotalResultMemoryServiceTest {
 
         // Given
         RoundResult roundResult = RoundResult.builder()
-                .result(Result.TWO_WINS.getOutput())
+                .result(Result.TWO_WINS)
                 .build();
 
         // When
@@ -107,7 +107,7 @@ public class TotalResultMemoryServiceTest {
 
         // Given
         RoundResult roundResult = RoundResult.builder()
-                .result(Result.DRAW.getOutput())
+                .result(Result.DRAW)
                 .build();
 
         // When

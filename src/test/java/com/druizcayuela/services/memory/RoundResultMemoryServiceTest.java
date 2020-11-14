@@ -29,9 +29,9 @@ public class RoundResultMemoryServiceTest {
         RoundResult roundResult = roundResultMemoryService.evaluateMoves(playerOne, playerTwo);
 
         // Then
-        assertEquals(Result.ONE_WINS.getOutput(), roundResult.getResult());
-        assertEquals(playerOne.getOutput(), roundResult.getFirstPlayerChoice());
-        assertEquals(playerTwo.getOutput(), roundResult.getSecondPlayerChoice());
+        assertEquals(Result.ONE_WINS, roundResult.getResult());
+        assertEquals(playerOne, roundResult.getFirstPlayerChoice());
+        assertEquals(playerTwo, roundResult.getSecondPlayerChoice());
     }
 
     @Test
@@ -45,9 +45,9 @@ public class RoundResultMemoryServiceTest {
         RoundResult roundResult = roundResultMemoryService.evaluateMoves(playerOne, playerTwo);
 
         // Then
-        assertEquals(Result.TWO_WINS.getOutput(), roundResult.getResult());
-        assertEquals(playerOne.getOutput(), roundResult.getFirstPlayerChoice());
-        assertEquals(playerTwo.getOutput(), roundResult.getSecondPlayerChoice());
+        assertEquals(Result.TWO_WINS, roundResult.getResult());
+        assertEquals(playerOne, roundResult.getFirstPlayerChoice());
+        assertEquals(playerTwo, roundResult.getSecondPlayerChoice());
     }
 
     @Test
@@ -61,8 +61,8 @@ public class RoundResultMemoryServiceTest {
         RoundResult roundResult = roundResultMemoryService.evaluateMoves(playerOne, playerTwo);
 
         // Then
-        assertEquals(Result.DRAW.getOutput(), roundResult.getResult());
-        assertEquals(playerOne.getOutput(), roundResult.getFirstPlayerChoice());
-        assertEquals(playerTwo.getOutput(), roundResult.getSecondPlayerChoice());
+        assertEquals(Result.DRAW, roundResult.getResult());
+        assertEquals(playerOne, roundResult.getFirstPlayerChoice());
+        assertEquals(playerTwo, roundResult.getSecondPlayerChoice());
     }
 }

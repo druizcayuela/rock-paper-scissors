@@ -1,5 +1,7 @@
 package com.druizcayuela.controlleres;
 
+import com.druizcayuela.api.mapper.RoundResultMapper;
+import com.druizcayuela.api.model.RoundResultDTO;
 import com.druizcayuela.domain.Move;
 import com.druizcayuela.domain.Result;
 import com.druizcayuela.domain.RoundResult;
@@ -29,6 +31,9 @@ public class PlayRoundControllerTest {
     @Mock
     TotalResultService totalResultService;
 
+    @Mock
+    RoundResultMapper roundResultMapper;
+
     @InjectMocks
     PlayRoundController playRoundController;
 
@@ -46,20 +51,30 @@ public class PlayRoundControllerTest {
     @Test
     public void playRound() throws Exception {
 
+        // Given
         RoundResult roundResult = RoundResult.builder()
-                .firstPlayerChoice(Move.PAPER.getOutput())
-                .secondPlayerChoice(Move.ROCK.getOutput())
-                .result(Result.ONE_WINS.getOutput())
+                .firstPlayerChoice(Move.PAPER)
+                .secondPlayerChoice(Move.ROCK)
+                .result(Result.ONE_WINS)
                 .build();
 
+        RoundResultDTO roundResultDTO = RoundResultDTO.builder()
+                .firstPlayerChoice(roundResult.getFirstPlayerChoice().getOutput())
+                .secondPlayerChoice(roundResult.getSecondPlayerChoice().getOutput())
+                .result(roundResult.getResult().getOutput())
+                .build();
+
+        // When
         when(roundResultService.evaluateMoves(any(Move.class), any(Move.class))).thenReturn(roundResult);
         when(totalResultService.update(any(RoundResult.class))).thenReturn(null);
+        when(roundResultMapper.roundResultToRoundResultDTO(any(RoundResult.class))).thenReturn(roundResultDTO);
 
+        // Then
         mockMvc.perform(get(PlayRoundController.BASE_URL)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.result", equalTo(roundResult.getResult())))
-                .andExpect(jsonPath("$.firstPlayerChoice", equalTo(roundResult.getFirstPlayerChoice())))
-                .andExpect(jsonPath("$.secondPlayerChoice", equalTo(roundResult.getSecondPlayerChoice())));
+                .andExpect(jsonPath("$.result", equalTo(roundResultDTO.getResult())))
+                .andExpect(jsonPath("$.firstPlayerChoice", equalTo(roundResultDTO.getFirstPlayerChoice())))
+                .andExpect(jsonPath("$.secondPlayerChoice", equalTo(roundResultDTO.getSecondPlayerChoice())));
     }
 }
