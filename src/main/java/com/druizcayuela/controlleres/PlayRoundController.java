@@ -34,6 +34,8 @@ public class PlayRoundController {
                 RockPlayer.builder().build().getNextMove()
         );
 
+        totalResultService.update(roundResult);
+
         return roundResult;
     }
 }

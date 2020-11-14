@@ -53,6 +53,7 @@ public class PlayRoundControllerTest {
                 .build();
 
         when(roundResultService.evaluateMoves(any(Move.class), any(Move.class))).thenReturn(roundResult);
+        when(totalResultService.update(any(RoundResult.class))).thenReturn(null);
 
         mockMvc.perform(get(PlayRoundController.BASE_URL)
                 .contentType(MediaType.APPLICATION_JSON))
