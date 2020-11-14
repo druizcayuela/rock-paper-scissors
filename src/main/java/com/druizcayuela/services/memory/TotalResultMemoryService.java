@@ -1,5 +1,7 @@
 package com.druizcayuela.services.memory;
 
+import com.druizcayuela.domain.Result;
+import com.druizcayuela.domain.RoundResult;
 import com.druizcayuela.domain.TotalResult;
 import com.druizcayuela.services.TotalResultService;
 import org.springframework.stereotype.Service;
@@ -13,4 +15,21 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TotalResultMemoryService extends AbstractMemoryService<TotalResult> implements TotalResultService {
+
+    @Override
+    public TotalResult update(RoundResult roundResult) {
+
+        TotalResult totalResult = this.findAll();
+
+        totalResult.setRoundsPlayed(totalResult.getRoundsPlayed() + 1);
+
+        if (roundResult.getResult().equals(Result.ONE_WINS.getOutput())) {
+            totalResult.setWinsFirstPlayer(totalResult.getWinsFirstPlayer() + 1);
+        } else if (roundResult.getResult().equals(Result.TWO_WINS.getOutput())) {
+            totalResult.setWinsSecondPlayer(totalResult.getWinsSecondPlayer() + 1);
+        } else if (roundResult.getResult().equals(Result.DRAW.getOutput())) {
+            totalResult.setTotalDraws(totalResult.getTotalDraws() + 1);
+        }
+        return this.save(totalResult);
+    }
 }
