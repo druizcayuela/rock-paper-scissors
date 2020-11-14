@@ -1,5 +1,7 @@
 package com.druizcayuela.controlleres;
 
+import com.druizcayuela.api.mapper.TotalResultMapper;
+import com.druizcayuela.api.model.TotalResultDTO;
 import com.druizcayuela.domain.TotalResult;
 import com.druizcayuela.services.TotalResultService;
 import org.junit.Before;
@@ -12,6 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.hamcrest.Matchers.equalTo;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -21,6 +24,9 @@ public class TotalResultControllerTest {
 
     @Mock
     TotalResultService totalResultService;
+
+    @Mock
+    TotalResultMapper totalResultMapper;
 
     @InjectMocks
     TotalResultController totalResultController;
@@ -38,6 +44,7 @@ public class TotalResultControllerTest {
     @Test
     public void getTotal() throws Exception {
 
+        // Given
         TotalResult totalResult = TotalResult.builder()
                 .roundsPlayed(5)
                 .winsFirstPlayer(2)
@@ -45,14 +52,24 @@ public class TotalResultControllerTest {
                 .totalDraws(1)
                 .build();
 
-        when(totalResultService.findAll()).thenReturn(totalResult);
+        TotalResultDTO totalResultDTO = TotalResultDTO.builder()
+                .roundsPlayed(totalResult.getRoundsPlayed())
+                .winsFirstPlayer(totalResult.getWinsFirstPlayer())
+                .winsSecondPlayer(totalResult.getWinsSecondPlayer())
+                .totalDraws(totalResult.getTotalDraws())
+                .build();
 
+        // When
+        when(totalResultService.findAll()).thenReturn(totalResult);
+        when(totalResultMapper.totalResultToTotalResultDTO(any(TotalResult.class))).thenReturn(totalResultDTO);
+
+        // Then
         mockMvc.perform(get(TotalResultController.BASE_URL)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.roundsPlayed", equalTo(totalResult.getRoundsPlayed())))
-                .andExpect(jsonPath("$.winsFirstPlayer", equalTo(totalResult.getWinsFirstPlayer())))
-                .andExpect(jsonPath("$.winsSecondPlayer", equalTo(totalResult.getWinsSecondPlayer())))
-                .andExpect(jsonPath("$.totalDraws", equalTo(totalResult.getTotalDraws())));
+                .andExpect(jsonPath("$.roundsPlayed", equalTo(totalResultDTO.getRoundsPlayed())))
+                .andExpect(jsonPath("$.winsFirstPlayer", equalTo(totalResultDTO.getWinsFirstPlayer())))
+                .andExpect(jsonPath("$.winsSecondPlayer", equalTo(totalResultDTO.getWinsSecondPlayer())))
+                .andExpect(jsonPath("$.totalDraws", equalTo(totalResultDTO.getTotalDraws())));
     }
 }
