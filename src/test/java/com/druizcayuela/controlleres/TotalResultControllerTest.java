@@ -1,9 +1,6 @@
 package com.druizcayuela.controlleres;
 
-import com.druizcayuela.domain.Move;
-import com.druizcayuela.domain.Result;
-import com.druizcayuela.domain.RoundResult;
-import com.druizcayuela.services.RoundResultService;
+import com.druizcayuela.domain.TotalResult;
 import com.druizcayuela.services.TotalResultService;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,50 +12,47 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class PlayRoundControllerTest {
-
-    @Mock
-    RoundResultService roundResultService;
+public class TotalResultControllerTest {
 
     @Mock
     TotalResultService totalResultService;
 
     @InjectMocks
-    PlayRoundController playRoundController;
+    TotalResultController totalResultController;
 
     MockMvc mockMvc;
 
     @Before
     public void setUp() {
-
         MockitoAnnotations.initMocks(this);
 
-        mockMvc = MockMvcBuilders.standaloneSetup(playRoundController)
+        mockMvc = MockMvcBuilders.standaloneSetup(totalResultController)
                 .setControllerAdvice(new RestResponseEntityExceptionHandler()).build();
     }
 
     @Test
-    public void playRound() throws Exception {
+    public void getTotal() throws Exception {
 
-        RoundResult roundResult = RoundResult.builder()
-                .firstPlayerChoice(Move.PAPER.getOutput())
-                .secondPlayerChoice(Move.ROCK.getOutput())
-                .result(Result.ONE_WINS.getOutput())
+        TotalResult totalResult = TotalResult.builder()
+                .roundsPlayed(5)
+                .winsFirstPlayer(2)
+                .winsSecondPlayer(2)
+                .totalDraws(1)
                 .build();
 
-        when(roundResultService.evaluateMoves(any(Move.class), any(Move.class))).thenReturn(roundResult);
+        when(totalResultService.findAll()).thenReturn(totalResult);
 
-        mockMvc.perform(get(PlayRoundController.BASE_URL)
+        mockMvc.perform(get(TotalResultController.BASE_URL)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.result", equalTo(Result.ONE_WINS.getOutput())))
-                .andExpect(jsonPath("$.firstPlayerChoice", equalTo(Move.PAPER.getOutput())))
-                .andExpect(jsonPath("$.secondPlayerChoice", equalTo(Move.ROCK.getOutput())));
+                .andExpect(jsonPath("$.roundsPlayed", equalTo(5)))
+                .andExpect(jsonPath("$.winsFirstPlayer", equalTo(2)))
+                .andExpect(jsonPath("$.winsSecondPlayer", equalTo(2)))
+                .andExpect(jsonPath("$.totalDraws", equalTo(1)));
     }
 }
