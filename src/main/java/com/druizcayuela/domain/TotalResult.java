@@ -3,7 +3,7 @@ package com.druizcayuela.domain;
 import lombok.*;
 
 /**
- * The response for the Total Controller
+ * The Total result
  *
  * @author druizcayuela
  *

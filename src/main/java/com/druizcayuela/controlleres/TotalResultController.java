@@ -9,6 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * The controller for Total Result
+ *
+ * @author druizcayuela
+ *
+ */
+
 @RestController
 @RequestMapping(TotalResultController.BASE_URL)
 public class TotalResultController {
@@ -23,6 +30,11 @@ public class TotalResultController {
         this.totalResultMapper = totalResultMapper;
     }
 
+    /**
+     * Get the total result of all the games
+     *
+     * @return the total result
+     */
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public TotalResultDTO getTotal() {

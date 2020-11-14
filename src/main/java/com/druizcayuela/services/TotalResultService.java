@@ -3,6 +3,13 @@ package com.druizcayuela.services;
 import com.druizcayuela.domain.RoundResult;
 import com.druizcayuela.domain.TotalResult;
 
+/**
+ * The Total result
+ *
+ * @author druizcayuela
+ *
+ */
+
 public interface TotalResultService extends CrudService<TotalResult> {
 
     /**

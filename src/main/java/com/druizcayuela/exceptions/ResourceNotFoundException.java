@@ -1,4 +1,11 @@
-package com.druizcayuela.services;
+package com.druizcayuela.exceptions;
+
+/**
+ * Resource Not Found Exception
+ *
+ * @author druizcayuela
+ *
+ */
 
 public class ResourceNotFoundException extends RuntimeException {
 

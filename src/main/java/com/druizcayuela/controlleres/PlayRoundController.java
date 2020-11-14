@@ -13,6 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * The controller for Play Ground
+ *
+ * @author druizcayuela
+ *
+ */
+
 @RestController
 @RequestMapping(PlayRoundController.BASE_URL)
 public class PlayRoundController {
@@ -29,6 +36,12 @@ public class PlayRoundController {
         this.roundResultMapper = roundResultMapper;
     }
 
+    /**
+     * Play a round with a {@link RandomPlayer} as player 1 and {@link RockPlayer} as player 2.
+     * Also needs to update to total result.
+     *
+     * @return the result of this round
+     */
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public RoundResultDTO playRound() {

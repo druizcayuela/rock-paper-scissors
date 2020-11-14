@@ -3,7 +3,7 @@ package com.druizcayuela.domain;
 import lombok.*;
 
 /**
- * The response for the PlayGround Controller
+ * The Round result
  *
  * @author druizcayuela
  *

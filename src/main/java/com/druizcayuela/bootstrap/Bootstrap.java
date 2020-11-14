@@ -5,6 +5,13 @@ import com.druizcayuela.services.TotalResultService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+/**
+ * Initialize total result with zero values
+ *
+ * @author druizcayuela
+ *
+ */
+
 @Component
 public class Bootstrap implements CommandLineRunner {
 
@@ -15,7 +22,7 @@ public class Bootstrap implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         totalResultService.save(TotalResult.builder()
                 .roundsPlayed(0)
                 .winsFirstPlayer(0)

@@ -1,6 +1,6 @@
 package com.druizcayuela.controlleres;
 
-import com.druizcayuela.services.ResourceNotFoundException;
+import com.druizcayuela.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +8,13 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+/**
+ * The Rest Exception Handler
+ *
+ * @author druizcayuela
+ *
+ */
 
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
