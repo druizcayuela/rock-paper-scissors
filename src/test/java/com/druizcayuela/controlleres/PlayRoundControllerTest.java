@@ -57,8 +57,8 @@ public class PlayRoundControllerTest {
         mockMvc.perform(get(PlayRoundController.BASE_URL)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.result", equalTo(Result.ONE_WINS.getOutput())))
-                .andExpect(jsonPath("$.firstPlayerChoice", equalTo(Move.PAPER.getOutput())))
-                .andExpect(jsonPath("$.secondPlayerChoice", equalTo(Move.ROCK.getOutput())));
+                .andExpect(jsonPath("$.result", equalTo(roundResult.getResult())))
+                .andExpect(jsonPath("$.firstPlayerChoice", equalTo(roundResult.getFirstPlayerChoice())))
+                .andExpect(jsonPath("$.secondPlayerChoice", equalTo(roundResult.getSecondPlayerChoice())));
     }
 }

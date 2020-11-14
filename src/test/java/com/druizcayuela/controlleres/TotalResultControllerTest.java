@@ -50,9 +50,9 @@ public class TotalResultControllerTest {
         mockMvc.perform(get(TotalResultController.BASE_URL)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.roundsPlayed", equalTo(5)))
-                .andExpect(jsonPath("$.winsFirstPlayer", equalTo(2)))
-                .andExpect(jsonPath("$.winsSecondPlayer", equalTo(2)))
-                .andExpect(jsonPath("$.totalDraws", equalTo(1)));
+                .andExpect(jsonPath("$.roundsPlayed", equalTo(totalResult.getRoundsPlayed())))
+                .andExpect(jsonPath("$.winsFirstPlayer", equalTo(totalResult.getWinsFirstPlayer())))
+                .andExpect(jsonPath("$.winsSecondPlayer", equalTo(totalResult.getWinsSecondPlayer())))
+                .andExpect(jsonPath("$.totalDraws", equalTo(totalResult.getTotalDraws())));
     }
 }
