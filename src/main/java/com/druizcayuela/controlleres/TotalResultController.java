@@ -1,6 +1,7 @@
 package com.druizcayuela.controlleres;
 
-import com.druizcayuela.domain.TotalResult;
+import com.druizcayuela.api.mapper.TotalResultMapper;
+import com.druizcayuela.api.model.TotalResultDTO;
 import com.druizcayuela.services.TotalResultService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,14 +16,16 @@ public class TotalResultController {
     public static final String BASE_URL = "/api/v1/total";
 
     private final TotalResultService totalResultService;
+    private final TotalResultMapper totalResultMapper;
 
-    public TotalResultController(TotalResultService totalResultService) {
+    public TotalResultController(TotalResultService totalResultService, TotalResultMapper totalResultMapper) {
         this.totalResultService = totalResultService;
+        this.totalResultMapper = totalResultMapper;
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public TotalResult getTotal() {
-        return totalResultService.findAll();
+    public TotalResultDTO getTotal() {
+        return totalResultMapper.totalResultToTotalResultDTO(totalResultService.findAll());
     }
 }
