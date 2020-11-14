@@ -8,7 +8,17 @@ package com.druizcayuela.domain;
  */
 public enum Move {
 
-    ROCK, PAPER, SCISSORS;
+    ROCK("Rock"), PAPER("Paper"), SCISSORS("Scissors");
+
+    private final String output;
+
+    Move(String output) {
+        this.output = output;
+    }
+
+    public String getOutput() {
+        return output;
+    }
 
     /**
      * Check in the move is beating with the given move
@@ -16,7 +26,7 @@ public enum Move {
      * @param opponentMove the opponent move
      * @return if the move wins
      */
-    boolean beats(Move opponentMove) {
+    public boolean beats(Move opponentMove) {
         switch (this) {
             case ROCK:
                 return opponentMove == SCISSORS;
