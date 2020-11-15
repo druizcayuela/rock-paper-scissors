@@ -27,5 +27,5 @@ public interface CrudService<T> {
      *
      * @return the object
      */
-    T findAll();
+    T findObject();
 }

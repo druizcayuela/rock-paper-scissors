@@ -38,6 +38,6 @@ public class TotalResultController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public TotalResultDTO getTotal() {
-        return totalResultMapper.totalResultToTotalResultDTO(totalResultService.findAll());
+        return totalResultMapper.totalResultToTotalResultDTO(totalResultService.findObject());
     }
 }

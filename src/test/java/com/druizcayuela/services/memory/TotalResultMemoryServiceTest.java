@@ -32,10 +32,10 @@ public class TotalResultMemoryServiceTest {
     }
 
     @Test
-    public void findAll_returnTheCorrectData() {
+    public void findObject_returnTheCorrectData() {
 
         // Given - When
-        TotalResult totalResult = totalResultMemoryService.findAll();
+        TotalResult totalResult = totalResultMemoryService.findObject();
 
         // Then
         assertNotNull(totalResult);

@@ -24,7 +24,7 @@ public class AbstractMemoryService<T> {
         return object;
     }
 
-    public T findAll() {
+    public T findObject() {
         return localMemory;
     }
 }

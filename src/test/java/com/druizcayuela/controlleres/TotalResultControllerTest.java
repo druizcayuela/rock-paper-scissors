@@ -59,7 +59,7 @@ public class TotalResultControllerTest {
                 .build();
 
         // When
-        when(totalResultService.findAll()).thenReturn(totalResult);
+        when(totalResultService.findObject()).thenReturn(totalResult);
         when(totalResultMapper.totalResultToTotalResultDTO(any(TotalResult.class))).thenReturn(totalResultDTO);
 
         // Then

@@ -19,7 +19,7 @@ public class TotalResultMemoryService extends AbstractMemoryService<TotalResult>
     @Override
     public TotalResult update(RoundResult roundResult) {
 
-        TotalResult totalResult = this.findAll();
+        TotalResult totalResult = this.findObject();
 
         totalResult.setRoundsPlayed(totalResult.getRoundsPlayed() + 1);
 
