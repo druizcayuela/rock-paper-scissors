@@ -8,10 +8,7 @@ import com.druizcayuela.domain.RoundResult;
 import com.druizcayuela.services.RoundResultService;
 import com.druizcayuela.services.TotalResultService;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * The controller for Play Ground
@@ -21,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
+@CrossOrigin
 @RequestMapping(PlayRoundController.BASE_URL)
 public class PlayRoundController {
 

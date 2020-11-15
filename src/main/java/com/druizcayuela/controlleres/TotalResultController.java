@@ -4,10 +4,7 @@ import com.druizcayuela.api.mapper.TotalResultMapper;
 import com.druizcayuela.api.model.TotalResultDTO;
 import com.druizcayuela.services.TotalResultService;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * The controller for Total Result
@@ -17,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
+@CrossOrigin
 @RequestMapping(TotalResultController.BASE_URL)
 public class TotalResultController {
 
