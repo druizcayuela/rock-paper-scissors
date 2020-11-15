@@ -37,8 +37,7 @@ public class TotalResultControllerTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        mockMvc = MockMvcBuilders.standaloneSetup(totalResultController)
-                .setControllerAdvice(new RestResponseEntityExceptionHandler()).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(totalResultController).build();
     }
 
     @Test

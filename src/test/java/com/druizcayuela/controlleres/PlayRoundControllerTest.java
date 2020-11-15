@@ -44,8 +44,7 @@ public class PlayRoundControllerTest {
 
         MockitoAnnotations.initMocks(this);
 
-        mockMvc = MockMvcBuilders.standaloneSetup(playRoundController)
-                .setControllerAdvice(new RestResponseEntityExceptionHandler()).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(playRoundController).build();
     }
 
     @Test
