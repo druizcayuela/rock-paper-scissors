@@ -1,7 +1,5 @@
 [![CircleCI](https://circleci.com/gh/druizcayuela/rock-paper-scissors.svg?style=svg)](https://circleci.com/gh/druizcayuela/rock-paper-scissors)
 [![codecov](https://codecov.io/gh/druizcayuela/rock-paper-scissors/branch/main/graph/badge.svg)](https://codecov.io/gh/druizcayuela/rock-paper-scissors)
-# Spring Framework 5 MVC Rest Application
-
 
 # ROCK-PAPER-SCISSORS Rest Application
 ROCK-PAPER-SCISSORS is a Spring Framework 5 MVC Rest Application. It's going to be the provider for the following Web App: https://github.com/druizcayuela/rock-paper-scissors-web
